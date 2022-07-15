@@ -35,6 +35,7 @@ class Address(Base):
     def to_dict(self):
         return {}
 
+
 class Post(Base):
     __tablename__ = 'Post'
     id = Column(Integer, primary_key=True)
@@ -46,15 +47,17 @@ class Post(Base):
     like =  Column(Boolean(), nullable=False)
     amount_of_likes =  Column(Integer, nullable=False)
 
+
 class Comment(Base):
     __tablename__ = 'Comment'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('User.id'))
     post_id = Column(Integer, ForeignKey('Post.id'))
     body = Column(String(250), nullable=False)
-    like =  Column(Boolean(), nullable=False)
+    like =  Column(Boolean, nullable=False)
     amount_of_likes =  Column(Integer, nullable=False)
     date_created = Column(DateTime, nullable=False)
+
 
 class Like(Base):
     __tablename__ = 'Comment'
@@ -62,7 +65,7 @@ class Like(Base):
     user_id = Column(Integer, ForeignKey('User.id'))
     post_id = Column(Integer, ForeignKey('Post.id'))
     comment_id = Column(Integer, ForeignKey('Comment.id'))
-    like =  Column(Boolean(), nullable=False)
+    like =  Column(Boolean, nullable=False)
     date_created = Column(DateTime, nullable=False)
 
 
